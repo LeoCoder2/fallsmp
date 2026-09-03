@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fall SMP | Ultimate Minecraft Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0e0a07;
+      --card-bg: rgba(26, 17, 11, 0.7);
+      --orange-primary: #d96b27;
+      --orange-glow: #ff8c38;
+      --gold-accent: #f5a623;
+      --text-main: #f0f0f0;
+      --text-muted: #a09085;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(217, 107, 39, 0.15), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(245, 166, 35, 0.08), transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 8%;
+      background: rgba(14, 10, 7, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(217, 107, 39, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .nav-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 35px rgba(217, 107, 39, 0.6));
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #ffffff 30%, var(--orange-glow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* Actions Container */
+    .cta-container {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Server IP Box */
+    .ip-box {
+      background: var(--card-bg);
+      border: 2px solid var(--orange-primary);
+      box-shadow: 0 0 25px rgba(217, 107, 39, 0.3);
+      border-radius: 12px;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ip-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(217, 107, 39, 0.5);
+      border-color: var(--orange-glow);
+    }
+
+    .ip-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .copy-btn {
+      background: var(--orange-primary);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--orange-glow);
+    }
+
+    /* Action Buttons */
+    .btn {
+      color: #fff;
+      text-decoration: none;
+      padding: 1rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .store-btn {
+      background: linear-gradient(135deg, var(--gold-accent), var(--orange-primary));
+      box-shadow: 0 0 25px rgba(245, 166, 35, 0.4);
+    }
+
+    .store-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(245, 166, 35, 0.6);
+    }
+
+    .discord-btn {
+      background: #5865F2;
+      box-shadow: 0 0 25px rgba(88, 101, 242, 0.3);
+    }
+
+    .discord-btn:hover {
+      transform: translateY(-3px);
+      background: #4752C4;
+      box-shadow: 0 0 35px rgba(88, 101, 242, 0.5);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 8%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(217, 107, 39, 0.2);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange-primary), var(--gold-accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(217, 107, 39, 0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid rgba(217, 107, 39, 0.15);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background: rgba(10, 7, 5, 0.9);
+    }
+
+    footer span {
+      color: var(--orange-glow);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <img src="logo.png" alt="Fall SMP Logo">
+      <span>FALL SMP</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="https://shop.fallsmp.my.to" target="_blank">Store</a></li>
+      <li><a href="https://discord.gg/antAMXPVXE" target="_blank">Discord</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <img src="logo.png" alt="Fall SMP Leaf Logo" class="hero-logo">
+    <h1>FALL SMP</h1>
+    <p>Join the ultimate survival multiplayer experience. Build, trade, and explore with a growing community.</p>
+
+    <div class="cta-container">
+      <div class="ip-box" onclick="copyIP()">
+        <span class="ip-text" id="serverIP">play.fallsmp.my.to:22642</span>
+        <button class="copy-btn" id="copyBtn">Copy IP</button>
+      </div>
+      <a href="https://shop.fallsmp.my.to" target="_blank" class="btn store-btn">
+        Visit Store
+      </a>
+      <a href="https://discord.gg/antAMXPVXE" target="_blank" class="btn discord-btn">
+        Join Discord
+      </a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2 class="section-title">Server Features</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Classic Survival</h3>
+        <p>Enjoy standard survival gameplay with enhanced community features and claim protection.</p>
+      </div>
+      <div class="card">
+        <h3>Player Economy</h3>
+        <p>Trade resources, set up shops, and participate in server auctions to build your wealth.</p>
+      </div>
+      <div class="card">
+        <h3>Active Community</h3>
+        <p>Join an active community with regular events, player builds, and an active Discord server.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 <span>Fall SMP</span>. Not affiliated with Mojang Studios.</p>
+  </footer>
+
+  <script>
+    function copyIP() {
+      const ipText = document.getElementById("serverIP").innerText;
+      navigator.clipboard.writeText(ipText).then(() => {
+        const btn = document.getElementById("copyBtn");
+        btn.innerText = "Copied!";
+        btn.style.background = "#4CAF50";
+        setTimeout(() => {
+          btn.innerText = "Copy IP";
+          btn.style.background = "var(--orange-primary)";
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
