@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Fall SMP</title>
 
   <!-- Favicon Links -->
@@ -32,10 +32,14 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
-      overflow-x: hidden;
       background-image: 
         radial-gradient(circle at 50% 20%, rgba(217, 107, 39, 0.15), transparent 60%),
         radial-gradient(circle at 80% 80%, rgba(245, 166, 35, 0.08), transparent 50%);
@@ -47,7 +51,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 8%;
+      padding: 1.2rem 8%;
       background: rgba(14, 10, 7, 0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(217, 107, 39, 0.2);
@@ -100,7 +104,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       position: relative;
     }
 
@@ -145,6 +149,8 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      max-width: 800px;
     }
 
     /* Server IP Box */
@@ -201,6 +207,7 @@
       letter-spacing: 1px;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       transition: all 0.3s ease;
     }
@@ -228,7 +235,7 @@
 
     /* Features Section */
     .features {
-      padding: 6rem 8%;
+      padding: 4rem 8%;
       max-width: 1300px;
       margin: 0 auto;
     }
@@ -244,7 +251,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
@@ -297,7 +304,7 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 2.5rem 1rem;
       border-top: 1px solid rgba(217, 107, 39, 0.15);
       color: var(--text-muted);
       font-size: 0.85rem;
@@ -306,6 +313,107 @@
 
     footer span {
       color: var(--orange-glow);
+    }
+
+    /* MOBILE & ORIENTATION RESPONSIVE CSS */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 1rem 4%;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 2.5rem 1rem;
+      }
+
+      .hero-logo {
+        width: 150px;
+        height: 150px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .cta-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+      }
+
+      .ip-box {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+      }
+
+      .ip-text {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .features {
+        padding: 3rem 5%;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+      }
+
+      .card {
+        padding: 1.8rem;
+      }
+    }
+
+    /* Landscape Mode Tweaks for Phones */
+    @media screen and (max-height: 500px) and (orientation: landscape) {
+      nav {
+        padding: 0.6rem 5%;
+        flex-direction: row;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 2rem 1rem;
+      }
+
+      .hero-logo {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .cta-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .ip-box, .btn {
+        width: auto;
+      }
     }
   </style>
 </head>
